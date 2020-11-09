@@ -1,0 +1,38 @@
+<app-add-contact></app-add-contact>
+
+<ul class="collection with-header" *ngIf="contacts?.length > 0; else noContacts">
+    <li class="collection-item collection-header">
+        <h5>Liste des contacts</h5>
+    </li>
+    <li class="collection-item" *ngFor="let contact of contacts">
+ 
+        <div class="row">
+            <div class="s12 col">
+                <strong>{{contact.name}}</strong> 
+                        {{contact.phone}}
+                <button class="btn secondary-content" (click)="showEditForm(contact)">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                    
+                 
+            </div>
+            <div *ngIf="status " class="s12 col">
+                <div class="row">
+                    <div class="col s12 m6 input-field">
+                        <i class="fa fa-user"></i>
+                        <input [(ngModel)]="contact.name" type="text">
+                    </div>
+                    <div class="col s12 m6 input-field">
+                        <i class="fa fa-phone"></i>
+                        <input [(ngModel)]="contact.phone" type="text">
+                    </div>
+                    <a class="btn-floating btn-large waves-effect waves-light orange" (click)="updateContact(contact)"><i class="fa fa-edit"></i></a>
+                    <a class="btn-floating btn-large waves-effect waves-light red" (click)="deleteContact(contact)"><i class="fa fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+<ng-template #noContacts>
+    <h1>No contacts</h1>
+</ng-template>

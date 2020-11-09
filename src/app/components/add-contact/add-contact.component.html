@@ -1,0 +1,33 @@
+<br>
+  <div class="row">
+    <form  *ngIf="showForm" class="col s12" (ngSubmit)="addContact()">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="fa fa-user prefix"></i>
+          <input required [(ngModel)]="contact.name" name="name" placeholder="Full name" id="full_name" type="text">
+          <label for="full_name">Full Name</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="fa fa-phone prefix"></i>  
+          <input required [(ngModel)]="contact.phone" name="phone" placeholder="Phone number" id="phone_number" type="text">
+          <label for="phone_number">Phone number</label>
+        </div>
+      </div>
+      <button class="btn-large green" type="submit">Submit</button>
+    </form>
+    
+
+    <div *ngIf="!showForm" class="fixed-action-btn">
+        <a class="btn-floating btn-large green waves-effect waves-light" (click)="showFormClick()">
+          <i class="large fa fa-plus"></i>
+        </a>
+    </div>  
+
+    <div *ngIf="showForm" class="fixed-action-btn">
+        <a class="btn-floating btn-large yellow waves-effect waves-light" (click)="hideFormClick()">
+          <i class="large fa fa-times-circle"></i>
+        </a>
+    </div>  
+
+  </div>
+      
